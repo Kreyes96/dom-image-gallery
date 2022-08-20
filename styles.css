@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&display=swap');
+
+
 html {
    font-size: 62.5%;
    box-sizing: border-box;
@@ -5,6 +8,7 @@ html {
 
 body {
    margin: 0;
+   font-family: 'Montserrat', sans-serif;
    background: linear-gradient(to right, #c94b4b, #4b134f);
    background-repeat: no-repeat;
    background-size: cover;
@@ -18,10 +22,99 @@ body {
    box-sizing: inherit;
 }
 
-.grid-gallery {
+.container {
+   max-width: 1200px;
    margin: 0 auto;
-   padding: 5rem 2rem;
-   max-width: 900px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+
+/* ====== Header ===== */
+.header {
+   width: 100%;
+   padding: 2rem;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: flex-start;
+   background-color: transparent;
+}
+
+.header div {
+   display: flex;
+   align-items: center;
+   column-gap: 0.5rem;
+}
+
+.header-image {
+   width: 60px;
+   fill: #ffffff;
+}
+
+.header-heading {
+   margin: 0;
+   font-size: 4.5rem;
+   font-weight: 800;
+   color: #ffffff;
+   text-transform: uppercase;
+}
+
+.header-subheading {
+   margin: 0;
+   font-size: 2rem;
+   font-weight: 500;
+   color: #ffffff;
+}
+
+.header-form {
+   margin-block-start: 8rem;
+   width: 100%;
+   height: 35px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   column-gap: 0.5rem;
+}
+
+.input-search,
+.btn-search {
+   font-size: 1.8rem;
+   height: inherit;
+   border: none;
+   font-family: 'Montserrat', sans-serif;
+}
+
+.input-search {
+   padding-inline: 1rem;
+   width: 85%;
+   outline: none;
+}
+
+.btn-search {
+   width: 15%;
+   padding: 0;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   column-gap: 0.5rem;
+   background-color: #8061E6;
+}
+
+.btn-search svg {
+   width: 30px;
+   fill: #ffffff;
+}
+
+.btn-search span {
+   color: #ffffff;
+   display: none;
+}
+
+/* ===== Main ===== */
+.grid-gallery {
+   margin-block-start: 3rem;
+   padding-inline: 2rem;
    display: grid;
    grid-template-columns: 1fr;
    gap: 1.2rem;
@@ -87,18 +180,44 @@ body {
    cursor: pointer;
 }
 
-@media(min-width: 580px) {
+@media (min-width: 580px) {
    .grid-gallery {
       grid-template-columns: repeat(2, 1fr);
    }
 }
 
-@media(min-width: 768px) {
+@media (min-width: 768px) {
    .grid-gallery {
       grid-template-columns: repeat(3, 1fr);
    }
 
+   .input-search {
+      width: 80%;
+   }
+   
+   .btn-search {
+      width: 20%;
+   }
+
+   .btn-search svg {
+      width: 25px;
+   }
+
+   .btn-search span {
+      display: block;
+   }
+
    .card {
       height: 250px;
+   }
+}
+
+@media (min-width: 1024px) {
+   .header-form {
+      width: 50%;
+   }
+
+   .grid-gallery {
+      grid-template-columns: repeat(4, 1fr);
    }
 }
