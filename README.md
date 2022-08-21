@@ -1,5 +1,5 @@
 # DOM Image Gallery
-A very simple image gallery for the purpose of practicing DOM manipulation.
+An image gallery that consumes the Unsplash API.
 
 ## Screenshot
 ![](./images/screenshot1.PNG)
