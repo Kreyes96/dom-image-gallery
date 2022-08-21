@@ -2,5 +2,5 @@
 An image gallery that consumes the Unsplash API.
 
 ## Screenshot
-![](./images/screenshot1.PNG)
-![](./images/screenshot2.PNG)
+![](./images/screenshot1.png)
+![](./images/screenshot2.png)
