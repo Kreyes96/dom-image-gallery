@@ -1,0 +1,26 @@
+@use '../base/variables' as var;
+
+// Media queries.
+@mixin cellphone-size {
+   @media (min-width: var.$cellphone-size) {
+      @content;
+   }
+}
+
+@mixin tablet-size {
+   @media (min-width: var.$tablet-size) {
+      @content;
+   }
+}
+
+@mixin laptop-size {
+   @media (min-width: var.$laptop-size) {
+      @content;
+   }
+}
+
+@mixin desktop-size {
+   @media (min-width: var.$desktop-size) {
+      @content;
+   }
+}

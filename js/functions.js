@@ -1,22 +1,8 @@
 import { searchForm, searchTerm, gridGallery } from './selectors.js';
-import queryAPI from "./api.js";
-
-/* EVENTS */
-export default function loadData() {
-   searchForm.addEventListener('submit', showImages);
-   searchTerm.addEventListener('keyup', () => {
-      if(!searchTerm.value) {
-         searchTerm.style.borderColor = '#ff0000';
-         showErrorAlert('Try enter a topic of your interest.');
-      } else {
-         searchTerm.style.borderColor = '#4b134f';
-      };
-   });
-};
-
+import queryAPI from './api.js';
 
 /* FUNCTIONS. */
-function showImages(e) {
+export function showImages(e) {
    e.preventDefault();
 
    searchValidate();
@@ -32,7 +18,7 @@ function searchValidate() {
    };
 };
 
-function showErrorAlert(message) {
+export function showErrorAlert(message) {
    const alertExist = document.querySelector('.alert');
 
    if(!alertExist) {
@@ -59,16 +45,16 @@ function cleanHTML(element) {
 export function getData(data) {
    const { results } = data;
 
-   createCard(results);
+   createCardContainer(results);
 };
 
-function createCard(results) {
+function createCardContainer(results) {
    results.forEach(result => {
       const { alt_description, likes, urls: { regular }, user: { username, profile_image: { small } } } =  result;
    
-      const card = document.createElement('div');
-      card.classList.add('card');
-      card.onclick = displayModal;
+      const cardContainer = document.createElement('div');
+      cardContainer.classList.add('card-container');
+      cardContainer.onclick = displayModal;
 
       const cardInfo = document.createElement('div');
       cardInfo.classList.add('card-info');
@@ -76,10 +62,10 @@ function createCard(results) {
       cardInfo.appendChild(createCardUserInfo(username, small));
       cardInfo.appendChild(createCardLikesInfo(likes));
 
-      card.appendChild(createCardImage(regular, alt_description, alt_description));
-      card.appendChild(cardInfo);
+      cardContainer.appendChild(createCardImage(regular, alt_description, alt_description));
+      cardContainer.appendChild(cardInfo);
 
-      addCardImageToGrid(card);
+      addCardImageToGrid(cardContainer);
    });
 };
 
