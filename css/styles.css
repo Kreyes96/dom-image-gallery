@@ -315,6 +315,7 @@ a {
   width: 350px;
   height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   position: fixed;
@@ -327,6 +328,7 @@ a {
 @media (min-width: 768px) {
   .modal {
     width: 700px;
+    flex-direction: row;
   }
 }
 @media (min-width: 1024px) {
@@ -335,35 +337,51 @@ a {
   }
 }
 
-.modal-figure,
-.modal-user-info {
-  height: 500px;
-  background-color: #ffffff;
-}
-
 .modal-figure {
   width: 100%;
-  border-radius: 8px 0 0 8px;
+  height: 220px;
+  border-radius: 8px 8px 0 0;
 }
 @media (min-width: 768px) {
+  .modal-figure {
+    width: 50%;
+    height: 500px;
+    border-radius: 8px 0 0 8px;
+  }
+}
+@media (min-width: 1024px) {
   .modal-figure {
     width: 60%;
   }
 }
 
 .modal-image {
-  border-radius: 8px 0 0 8px;
+  border-radius: 8px 8px 0 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
+@media (min-width: 768px) {
+  .modal-image {
+    border-radius: 8px 0 0 8px;
+  }
+}
 
 .modal-user-info {
+  width: 100%;
   font-family: Helvetica, sans-serif;
   padding: 1.5rem;
-  border-radius: 0 7px 7px 0;
+  border-radius: 0 0 8px 8px;
+  background-color: #ffffff;
 }
 @media (min-width: 768px) {
+  .modal-user-info {
+    width: 50%;
+    height: 500px;
+    border-radius: 0 8px 8px 0;
+  }
+}
+@media (min-width: 1024px) {
   .modal-user-info {
     width: 40%;
   }

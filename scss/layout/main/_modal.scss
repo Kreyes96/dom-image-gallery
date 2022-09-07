@@ -17,6 +17,7 @@
    width: 350px;
    height: 100vh;
    display: flex;
+   flex-direction: column;
    justify-content: center;
    align-items: center;
    position: fixed;
@@ -27,6 +28,7 @@
 
    @include mix.tablet-size {
       width: 700px;
+      flex-direction: row;
    }
 
    @include mix.laptop-size {
@@ -34,34 +36,47 @@
    }
 }
 
-.modal-figure,
-.modal-user-info {
-   height: 500px;
-   background-color: var.$white-color;
-}
-
 .modal-figure {
    width: 100%;
-   border-radius: 8px 0 0 8px;
-
+   height: 220px;
+   border-radius: 8px 8px 0 0;
+   
    @include mix.tablet-size {
+      width: 50%;
+      height: 500px;
+      border-radius: 8px 0 0 8px;
+   }
+
+   @include mix.laptop-size {
       width: 60%;
    }
 }
 
 .modal-image {
-   border-radius: 8px 0 0 8px;
+   border-radius: 8px 8px 0 0;
    width: 100%;
    height: 100%;
    object-fit: cover;
+   
+   @include mix.tablet-size {
+      border-radius: 8px 0 0 8px;
+   }
 }
 
 .modal-user-info {
+   width: 100%;
    font-family: Helvetica, sans-serif;
    padding: 1.5rem;
-   border-radius: 0 7px 7px 0;
-
+   border-radius: 0 0 8px 8px;
+   background-color: var.$white-color;
+   
    @include mix.tablet-size {
+      width: 50%;
+      height: 500px;
+      border-radius: 0 8px 8px 0;
+   }
+
+   @include mix.laptop-size {
       width: 40%;
    }
 }
@@ -100,7 +115,7 @@
 .modal-user-info-thirdBlock,
 .modal-user-info-fourthBlock {
    margin-block-start: 3rem;
-
+   
    span {
       font-size: 1.3rem;
       color: var.$gray-color;
