@@ -1,4 +1,4 @@
-import { getData } from './functions.js';
+import { getData, showSpinner } from './functions.js';
 
 /* Query the Unsplash API. */
 function queryAPI(searchTerm) {

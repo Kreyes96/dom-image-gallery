@@ -1,50 +1,5 @@
-@use '../base/variables' as var;
-@use '../base/mixins' as mix;
-
-/* Header */
-.header {
-   width: 100%;
-   padding: 2rem;
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   align-items: flex-start;
-   background-color: transparent;
-}
-
-.header div {
-   display: flex;
-   align-items: center;
-   column-gap: 0.5rem;
-}
-
-/* Image */
-.header-image {
-   width: 60px;
-   fill: var.$orange-color;
-}
-
-/* Headings */
-.header-heading,
-.header-subheading {
-   background: linear-gradient(to right, #c94b4b, #4b134f);
-   background-clip: text;
-   -webkit-background-clip: text;
-   color: transparent;
-}
-
-.header-heading {
-   margin: 0;
-   font-size: 4.5rem;
-   font-weight: 800;
-   text-transform: uppercase;
-}
-
-.header-subheading {
-   margin: 0;
-   font-size: 2rem;
-   font-weight: 700;
-}
+@use '../../base/variables' as var;
+@use '../../base/mixins' as mix;
 
 /* Form */
 .header-form {

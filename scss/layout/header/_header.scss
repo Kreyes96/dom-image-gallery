@@ -1,0 +1,25 @@
+@use '../../base/variables' as var;
+@use '../../base/mixins' as mix;
+
+/* Header */
+.header {
+   width: 100%;
+   padding: 2rem;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: flex-start;
+   background-color: transparent;
+}
+
+.header div {
+   display: flex;
+   align-items: center;
+   column-gap: 0.5rem;
+}
+
+/* Image */
+.header-image {
+   width: 60px;
+   fill: var.$orange-color;
+}

@@ -1,0 +1,24 @@
+@use '../../base/variables' as var;
+@use '../../base/mixins' as mix;
+
+/* Headings */
+.header-heading,
+.header-subheading {
+   background: linear-gradient(to right, #c94b4b, #4b134f);
+   background-clip: text;
+   -webkit-background-clip: text;
+   color: transparent;
+}
+
+.header-heading {
+   margin: 0;
+   font-size: 4.5rem;
+   font-weight: 800;
+   text-transform: uppercase;
+}
+
+.header-subheading {
+   margin: 0;
+   font-size: 2rem;
+   font-weight: 700;
+}

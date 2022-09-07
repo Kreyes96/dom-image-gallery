@@ -1,0 +1,23 @@
+@use '../../base/variables' as var;
+@use '../../base/mixins' as mix;
+
+/* Grid Gallery */
+.grid-gallery {
+   margin-block: 3rem;
+   padding-inline: 2rem;
+   display: grid;
+   grid-template-columns: 1fr;
+   gap: 1.5rem;
+
+   @include mix.cellphone-size {
+      grid-template-columns: repeat(2, 1fr);
+   }
+
+   @include mix.tablet-size {
+      grid-template-columns: repeat(3, 1fr);
+   }
+
+   @include mix.laptop-size {
+      grid-template-columns: repeat(4, 1fr);
+   }
+}

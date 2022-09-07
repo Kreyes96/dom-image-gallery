@@ -1,3 +1,7 @@
-@forward './header';
-@forward './main';
+@forward './header/header';
+@forward './header/headings';
+@forward './header/form';
+@forward './main/grid-gallery';
+@forward './main/card';
+@forward './main/modal';
 @forward './spinner';

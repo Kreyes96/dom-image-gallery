@@ -1,0 +1,103 @@
+@use '../../base/variables' as var;
+@use '../../base/mixins' as mix;
+
+/* Card */
+.card-container {
+   height: 330px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   border: 1px solid rgba(0, 0, 0, 0.1);
+   border-radius: 5px;
+   
+   @include mix.laptop-size {
+      height: 300px;
+      border: none;
+      position: relative;
+
+      &:hover {
+         box-shadow: 5px 5px 10px -1px rgba(0, 0, 0, 0.2);
+      }
+
+      &:hover {
+         .card-image {
+            filter: brightness(60%);
+            transition: 0.4s ease;
+         }
+
+         .card-info {
+            display: flex;
+         }
+      }
+   }
+}
+
+.card-image {
+   width: 100%;
+   height: 85%;
+   object-fit: cover;
+   border-radius: 5px 5px 0 0;
+   
+   @include mix.laptop-size {
+      height: inherit;
+      border-radius: 5px;
+   }
+}
+
+.card-info {
+   padding: 1rem;
+   width: 100%;
+   height: 15%;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   border-radius: 0 0 5px 5px;
+   
+   @include mix.laptop-size {
+      display: none;
+      position: absolute;
+      inset-block-end: 0;
+   }
+}
+
+.card-user-info,
+.card-likes-info {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   column-gap: 0.5rem;
+}
+
+.user-image-container,
+.likes-image {
+   width: 22px;
+}
+
+.user-image {
+   width: 100%;
+   height: 100%;
+   border-radius: 50%;
+}
+
+.likes-image {
+   fill: var.$red-color;
+   
+   @include mix.laptop-size {
+      fill: var.$white-color;
+   }
+}
+
+.user-text,
+.likes-text {
+   font-size: 1.4rem;
+   color: var.$black-color;
+   
+   @include mix.laptop-size {
+      color: var.$white-color;
+   }
+}
+
+.card-container,
+.close-btn:hover {
+   cursor: pointer;
+}
