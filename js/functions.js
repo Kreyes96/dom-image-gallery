@@ -8,13 +8,14 @@ export function showImages(e) {
    searchValidate();
 };
 
+let currentPage = 1;
 function searchValidate() {
    if(!searchTerm.value) {
       showErrorAlert('You must enter a search term.');
       return;
    } else {
       cleanHTML(gridGallery);
-      queryAPI(searchTerm.value);
+      queryAPI(searchTerm.value, currentPage);
    };
 };
 
@@ -43,12 +44,15 @@ function cleanHTML(element) {
 };
 
 export function getData(data) {
-   const { total, results } = data;
-   
+   const { total, results, total_pages } = data;
+
    if(!total) {
       showErrorAlert('Your search could not be found.');
    } else {
       createCardContainer(results);
+      
+      let pagesPager = getPagesPager(total_pages);
+      createPager(pagesPager);
    };
 };
 
@@ -225,4 +229,39 @@ export function showSpinner() {
    `;
 
    gridGallery.appendChild(spinner);
+};
+
+function* getPagesPager(totalPages) {
+   for(let i = 1; i <= totalPages; i++) {
+      yield i;
+   };
+};
+
+function createPager(pagesPager) {
+   const pager = document.querySelector('.pager');
+   cleanHTML(pager);
+
+   while(pagesPager) {
+      const { value, done } = pagesPager.next();
+
+      if(done) {
+         return;
+      } else {
+         const pageNumber = document.createElement('a');
+         pageNumber.href = '#';
+         pageNumber.classList.add('page-number')
+         pageNumber.dataset.page = value;
+         pageNumber.textContent = value;
+         pageNumber.onclick = (e) => {
+            e.preventDefault();
+
+            currentPage = value;
+
+            cleanHTML(gridGallery);
+            queryAPI(searchTerm.value, currentPage);
+         };
+         
+         pager.appendChild(pageNumber);
+      };
+   };
 };
