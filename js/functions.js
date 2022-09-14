@@ -1,4 +1,4 @@
-import { searchForm, searchTerm, gridGallery } from './selectors.js';
+import { searchForm, searchTerm, gridGallery, header } from './selectors.js';
 import queryAPI from './api.js';
 
 /* FUNCTIONS. */
@@ -48,11 +48,14 @@ export function getData(data) {
 
    if(!total) {
       showErrorAlert('Your search could not be found.');
+      removeSpinner();
    } else {
-      createCardContainer(results);
+      removeSpinner();
       
-      let pagesPager = getPagesPager(total_pages);
-      createPager(pagesPager);
+      let pagesPagination = getPagesPagination(total_pages);
+      createPagination(pagesPagination);
+
+      createCardContainer(results);
    };
 };
 
@@ -220,33 +223,44 @@ function createModalUSerInfo(user) {
 };
 
 export function showSpinner() {
-   const spinner = document.createElement('div');
-   spinner.classList.add('spinner');
-   spinner.innerHTML = `
-      <div class="bounce1"></div>
-      <div class="bounce2"></div>
-      <div class="bounce3"></div>
-   `;
+   const spinnerExists = document.querySelector('.spinner');
 
-   gridGallery.appendChild(spinner);
+   if(!spinnerExists) {
+      const spinner = document.createElement('div');
+      spinner.classList.add('spinner');
+      spinner.innerHTML = `
+         <div class="bounce1"></div>
+         <div class="bounce2"></div>
+         <div class="bounce3"></div>
+      `;
+
+      header.appendChild(spinner);
+   };
 };
 
-function* getPagesPager(totalPages) {
+function removeSpinner() {
+   document.querySelector('.spinner').remove();
+};
+
+function* getPagesPagination(totalPages) {
    for(let i = 1; i <= totalPages; i++) {
       yield i;
    };
 };
 
-function createPager(pagesPager) {
-   const pager = document.querySelector('.pager');
-   cleanHTML(pager);
+function createPagination(pagesPagination) {
+   const pagination = document.querySelector('.pagination');
+   cleanHTML(pagination);
 
-   while(pagesPager) {
-      const { value, done } = pagesPager.next();
+   while(pagesPagination) {
+      const { value, done } = pagesPagination.next();
 
       if(done) {
          return;
       } else {
+         const pageNumberContainer = document.createElement('div');
+         pageNumberContainer.classList.add('page-number-container');
+
          const pageNumber = document.createElement('a');
          pageNumber.href = '#';
          pageNumber.classList.add('page-number')
@@ -254,14 +268,15 @@ function createPager(pagesPager) {
          pageNumber.textContent = value;
          pageNumber.onclick = (e) => {
             e.preventDefault();
-
+             
             currentPage = value;
 
             cleanHTML(gridGallery);
             queryAPI(searchTerm.value, currentPage);
          };
          
-         pager.appendChild(pageNumber);
+         pageNumberContainer.appendChild(pageNumber)
+         pagination.appendChild(pageNumberContainer);
       };
    };
 };

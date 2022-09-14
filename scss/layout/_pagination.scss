@@ -1,0 +1,51 @@
+@use '../base/variables' as var;
+@use '../base/mixins' as mix;
+
+.pagination-container {
+   margin-block: 3rem 2rem;
+   padding-inline: 2rem;
+   width: 100%;
+   background-color: transparent;
+}
+
+.pagination {
+   display: flex;
+   column-gap: 0.5rem;
+   overflow-x: scroll;
+   scroll-behavior: smooth;
+   scrollbar-width: thin;
+
+   &::-webkit-scrollbar {
+      height: 7px;
+   }
+   
+   &::-webkit-scrollbar-thumb {
+      border-radius: 5px;
+      background-color: var.$gray-color;
+   }
+}
+
+.page-number-container {
+   margin-block-end: 0.5rem;
+   min-width: 4rem;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.page-number {
+   padding-block: 0.5rem;
+   width: 100%;
+   height: inherit;
+   text-align: center;
+   font-size: 1.6rem;
+   color: var.$purple-color;
+
+   @include mix.laptop-size {
+      &:hover {
+         color: var.$white-color;
+         background-color: var.$purple-color;
+         transition: 0.2s ease-in-out;
+      }
+   }
+}
